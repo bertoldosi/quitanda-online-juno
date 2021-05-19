@@ -1,5 +1,3 @@
-import styles from "./styles.module.scss";
-
 function TermosUso() {
   return (
     <main className="flex-fill">

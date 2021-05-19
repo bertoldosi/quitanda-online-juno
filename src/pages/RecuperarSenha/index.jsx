@@ -1,5 +1,3 @@
-import styles from "./styles.module.scss";
-
 function RecuperarSenha() {
   return (
     <main className="flex-fill">

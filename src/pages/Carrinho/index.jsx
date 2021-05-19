@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import api from "../../api/api";
 
 import styles from "./styles.module.scss";

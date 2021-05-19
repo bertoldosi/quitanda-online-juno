@@ -1,5 +1,3 @@
-import styles from "./styles.module.scss";
-
 function TrocasDevolucoes() {
   return (
     <main className="flex-fill">
