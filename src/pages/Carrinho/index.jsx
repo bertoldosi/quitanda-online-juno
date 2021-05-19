@@ -9,13 +9,13 @@ import { Form } from "@unform/web";
 import * as Yup from "yup";
 import Input from "../../components/Input";
 
-const cartaoTeste = {
-  nomeTitular: "Jose teste",
-  numeroCartao: "5448280000000007",
-  codigoSeguranca: "123",
-  mesExpiracao: "01",
-  anoExpiracao: "2028",
-};
+// const cartaoTeste = {
+//   nomeTitular: "Jose teste",
+//   numeroCartao: "5448280000000007",
+//   codigoSeguranca: "123",
+//   mesExpiracao: "01",
+//   anoExpiracao: "2028",
+// };
 
 function Carrinho() {
   const formRef = useRef(null);
