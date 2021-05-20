@@ -1,13 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import api from "../../api/api";
 
 import styles from "./styles.module.scss";
+import espera from "../../assets/img/espera.svg";
 
 //Libs
 import { toast } from "react-toastify";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
 import Input from "../../components/Input";
+import { Result } from "antd";
+import { Spinner } from "react-bootstrap";
 
 // const cartaoTeste = {
 //   nomeTitular: "Jose teste",
@@ -18,11 +21,16 @@ import Input from "../../components/Input";
 // };
 
 function Carrinho() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isForm, setIsForm] = useState(true);
+  const [isResultado, setIsResultado] = useState(false);
+  const [typeResultStatus, setTypeResultStatus] = useState("");
+
   const formRef = useRef(null);
 
-  function tokenizarCartao(cartao) {
+  function tokenizarCartao(data) {
     api
-      .post("/tokenizar", cartao)
+      .post("/tokenizar", data)
       .then((response) => {
         toast.success("Cartão criptografado!");
         gerarConta(response.data);
@@ -31,6 +39,10 @@ function Carrinho() {
         toast.error(
           "Erro ao criptografado o cartão. Verefique se é validao e contate seu banco!"
         );
+
+        setIsLoading(false);
+        setIsForm(true);
+        setIsResultado(false);
       });
   }
 
@@ -61,6 +73,9 @@ function Carrinho() {
         pagarConta(response.data.id, cardHash);
       })
       .catch((erro) => {
+        setIsLoading(false);
+        setIsForm(true);
+        setIsResultado(false);
         console.log(erro.response.data.details[0].message);
         toast.error(erro.response.data.details[0].message);
       });
@@ -92,16 +107,27 @@ function Carrinho() {
       .post("/pagamento", pagador)
       .then((response) => {
         console.log(response);
+        setTypeResultStatus(response.data.payments.status);
         toast.success("Pagamento realizado!");
+        setTypeResultStatus("confirmado");
+        setIsLoading(false);
+        setIsForm(false);
+        setIsResultado(true);
       })
       .catch((erro) => {
+        setTypeResultStatus("negado");
+        setIsLoading(false);
+        setIsForm(false);
+        setIsResultado(true);
         console.log(erro.response.data.details[0].message);
         toast.error(erro.response.data.details[0].message);
       });
   }
 
   const handleSubmit = async (data) => {
-    console.log(data);
+    setIsLoading(true);
+    setIsForm(false);
+    setIsResultado(false);
     try {
       // resetando os erros
       formRef.current?.setErrors({});
@@ -120,9 +146,15 @@ function Carrinho() {
         abortEarly: false,
       });
 
+      //Removendo espaços
+      data.numeroCartao = await data.numeroCartao.replace(/\s/g, "");
+
       //Enviar
       tokenizarCartao(data);
     } catch (err) {
+      setIsLoading(false);
+      setIsForm(true);
+      setIsResultado(false);
       console.log(err);
       // pegando os erros
       if (err instanceof Yup.ValidationError) {
@@ -147,42 +179,109 @@ function Carrinho() {
           Formulario de pagamento
         </h3>
         <hr />
+
         <br />
 
-        <Form
-          onSubmit={handleSubmit}
-          ref={formRef}
-          className={`row g-3 m-2 ${styles.wrapper} `}
-        >
-          <div className="mb-3">
-            <Input
-              label="Nome impresso no cartão"
-              name="nomeTitular"
-              placeholder="Maria Souza Silvinha"
+        {isResultado && (
+          <>
+            {typeResultStatus === "confirmado" ? (
+              <Result
+                status="success"
+                title="Pagamento realizado com sucesso!"
+                extra={[
+                  <a
+                    className="btn btn-primary"
+                    href="/"
+                    type="primary"
+                    key="console"
+                  >
+                    Voltar
+                  </a>,
+                ]}
+              />
+            ) : (
+              <Result
+                status="error"
+                title="Pagamento não realizado!"
+                extra={[
+                  <a
+                    className="btn btn-primary"
+                    href="/"
+                    type="primary"
+                    key="console"
+                  >
+                    Voltar
+                  </a>,
+                ]}
+              />
+            )}
+          </>
+        )}
+
+        {isLoading && (
+          <>
+            <img
+              className="mb-5"
+              src={espera}
+              width={300}
+              alt="esperando resposta"
             />
-          </div>
+            <Spinner animation="border" variant="success" />
+          </>
+        )}
 
-          <div className="mb-3">
-            <Input
-              label="Número do cartão"
-              name="numeroCartao"
-              placeholder="4556 9498 0128 7697"
-            />
-          </div>
+        {isForm && (
+          <>
+            <Form
+              onSubmit={handleSubmit}
+              ref={formRef}
+              className={`row g-3 m-2 ${styles.wrapper} `}
+            >
+              <div className="mb-3">
+                <Input
+                  label="Nome impresso no cartão"
+                  name="nomeTitular"
+                  placeholder="Maria Souza Silvinha"
+                />
+              </div>
 
-          <div className="col-md-3">
-            <Input label="Ano" name="anoExpiracao" placeholder="25" />
-          </div>
+              <div className="mb-3">
+                <Input
+                  label="Número do cartão"
+                  name="numeroCartao"
+                  placeholder="4556 9498 0128 7697"
+                  mask={"cartao"}
+                />
+              </div>
 
-          <div className="col-md-3">
-            <Input label="Mês" name="mesExpiracao" placeholder="12" />
-          </div>
+              <div className="col-md-3">
+                <Input
+                  label="Ano"
+                  name="anoExpiracao"
+                  placeholder="2025"
+                  mask={"ano"}
+                />
+              </div>
 
-          <div className="col-md-6 mb-3">
-            <Input label="CVV" name="codigoSeguranca" placeholder="123" />
-          </div>
+              <div className="col-md-3">
+                <Input
+                  label="Mês"
+                  name="mesExpiracao"
+                  placeholder="12"
+                  mask={"mes"}
+                />
+              </div>
 
-          {/*<div className="mb-3">
+              <div className="col-md-6 mb-3">
+                <Input
+                  label="CVV"
+                  name="codigoSeguranca"
+                  placeholder="123"
+                  mask={"cvv"}
+                />
+              </div>
+
+              {/*<div className="mb-3">
             <label for="" className="form-label">
               Número de parcelamento
             </label>
@@ -194,16 +293,18 @@ function Carrinho() {
             </select>
           </div>*/}
 
-          <div className={styles.valorPedido}>
-            <h4>Total:</h4>
-            <span>R$ 43,00</span>
-          </div>
-          <div className="d-flex align-items-center justify-content-center">
-            <button type="submit" className="btn btn-danger px-5 py-2 mb-5">
-              Fechar pedido
-            </button>
-          </div>
-        </Form>
+              <div className={styles.valorPedido}>
+                <h4>Total:</h4>
+                <span>R$ 0,60</span>
+              </div>
+              <div className="d-flex align-items-center justify-content-center">
+                <button type="submit" className="btn btn-danger px-5 py-2 mb-5">
+                  Fechar pedido
+                </button>
+              </div>
+            </Form>
+          </>
+        )}
       </div>
     </main>
   );

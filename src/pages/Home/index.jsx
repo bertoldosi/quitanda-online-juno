@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 
 import slider01 from "../../assets/img/slides/slide01.jpg";
 import slider01Small from "../../assets/img/slides/slide01small.jpg";
-import produto01 from "../../assets/img/produtos/000001.jpg";
 import gerarToken from "../../api/gerarToken";
+import { produtos } from "../../assets/produtos";
 
 function Home() {
   useEffect(() => {
@@ -149,38 +149,37 @@ function Home() {
           <hr className="mt-3" />
 
           <div className="row g-3">
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-              <div className="card text-center bg-light">
-                <a
-                  href="/#"
-                  className="position-absolute end-0 p-2 text-danger"
-                >
-                  <i
-                    className="bi-suit-heart"
-                    style={{ fontSize: "24px", lineHeight: "24px" }}
-                  ></i>
-                </a>
-                <a href="/produto">
-                  <img src={produto01} className="card-img-top" />
-                </a>
-                <div className="card-header">R$ 4,50</div>
-                <div className="card-body">
-                  <h5 className="card-title">Banana Prata</h5>
-                  <p className="card-text truncar-3l">
-                    Banana prata da melhor qualidade possível, direto do
-                    produtor rural para a sua mesa.
-                  </p>
-                </div>
-                <div className="card-footer">
-                  <a href="/carrinho" className="btn btn-danger mt-2 d-block">
-                    Adicionar ao Carrinho
+            {produtos?.map((produto) => (
+              <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div className="card text-center bg-light">
+                  <a
+                    href="/#"
+                    className="position-absolute end-0 p-2 text-danger"
+                  >
+                    <i
+                      className="bi-suit-heart"
+                      style={{ fontSize: "24px", lineHeight: "24px" }}
+                    ></i>
                   </a>
-                  <small className="text-success">320,5kg em estoque</small>
+                  <a href="/produto">
+                    <img src={produto.imagem} className="card-img-top" />
+                  </a>
+                  <div className="card-header">{produto.preco}</div>
+                  <div className="card-body">
+                    <h5 className="card-title">{produto.nome}</h5>
+                    <p className="card-text truncar-3l">{produto.descricao}</p>
+                  </div>
+                  <div className="card-footer">
+                    <a href="/carrinho" className="btn btn-danger mt-2 d-block">
+                      Adicionar ao Carrinho
+                    </a>
+                    <small className="text-success">320,5kg em estoque</small>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
 
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            {/* <div className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
               <div className="card text-center bg-light">
                 <a
                   href="/#"
@@ -209,7 +208,7 @@ function Home() {
                   </small>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <hr className="mt-3" />
