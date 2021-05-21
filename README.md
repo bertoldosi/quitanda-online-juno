@@ -4,6 +4,7 @@
 
 | Número do cartão    | Status              |
 | ------------------- | ------------------- |
+| 4111 1111 1111 1111 | Saldo suficiente.   |
 | 5362 6820 0316 4890 | Saldo insuficiente. |
 | 5359 9917 3740 0750 | Cartão restrito.    |
 | 5579 0066 0617 8504 | Cartão inválido.    |
