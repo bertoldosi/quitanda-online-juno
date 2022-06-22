@@ -2,6 +2,13 @@
   "name": "quitanda-online-juno",
   "version": "0.1.0",
   "private": true,
+  "author": "Bertoldo",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@testing-library/jest-dom": "^5.11.4",
@@ -24,12 +31,6 @@
     "remask": "^0.1.0-alpha.5",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

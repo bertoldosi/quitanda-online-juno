@@ -53,6 +53,9 @@ git clone https://github.com/bertoldosi/quitanda-online-juno
 cd quitanda-online-juno
 
 # Baixar as dependências
+Importante: Necessário ter o nvm devidamente instalado ou a versão node v16.10.0.
+
+nvm use
 npm i
 
 # Executar o servidor
