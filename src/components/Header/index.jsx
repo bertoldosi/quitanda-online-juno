@@ -35,26 +35,14 @@ function Header() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white" href="/contato">
-                  Contato
+                <a className="nav-link text-white" href="/sobre">
+                  Quem somos
                 </a>
               </li>
             </ul>
 
             <div className="align-self-end">
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link text-white" href="/cadastro">
-                    Quero Me Cadastrar
-                  </a>
-                </li>
-
-                <li className="nav-item">
-                  <a className="nav-link text-white" href="/login">
-                    Entrar
-                  </a>
-                </li>
-
                 <li className="nav-item">
                   <span
                     className="
