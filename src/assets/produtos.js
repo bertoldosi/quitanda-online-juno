@@ -13,6 +13,7 @@ import pd12 from "./img/produtos/000012.jpg";
 
 export const produtos = [
   {
+    id: "01",
     preco: "R$ 0,60",
     nome: "Banana Prata",
     descricao:
@@ -21,6 +22,7 @@ export const produtos = [
   },
 
   {
+    id: "02",
     preco: "R$ 0,60",
     nome: "Abacaxi",
     descricao:
@@ -29,6 +31,7 @@ export const produtos = [
   },
 
   {
+    id: "03",
     preco: "R$ 0,60",
     nome: "Mamão",
     descricao:
@@ -37,37 +40,7 @@ export const produtos = [
   },
 
   {
-    preco: "R$ 0,60",
-    nome: "Maçã",
-    descricao:
-      "Maçã da melhor qualidade possível, direto do produtor rural para a sua mesa.",
-    imagem: pd04,
-  },
-
-  {
-    preco: "R$ 0,60",
-    nome: "Goiaba",
-    descricao:
-      "Goiaba da melhor qualidade possível, direto do produtor rural para a sua mesa.",
-    imagem: pd05,
-  },
-  {
-    preco: "R$ 0,60",
-    nome: "Laranja",
-    descricao:
-      "Laranja da melhor qualidade possível, direto do produtor rural para a sua mesa.",
-    imagem: pd06,
-  },
-
-  {
-    preco: "R$ 0,60",
-    nome: "Abacate",
-    descricao:
-      "Abacate da melhor qualidade possível, direto do produtor rural para a sua mesa.",
-    imagem: pd07,
-  },
-
-  {
+    id: "04",
     preco: "R$ 0,60",
     nome: "Abacate liso",
     descricao:
@@ -76,6 +49,7 @@ export const produtos = [
   },
 
   {
+    id: "05",
     preco: "R$ 0,60",
     nome: "Abobora",
     descricao:
@@ -83,6 +57,7 @@ export const produtos = [
     imagem: pd09,
   },
   {
+    id: "06",
     preco: "R$ 0,60",
     nome: "Pipino",
     descricao:
@@ -90,19 +65,50 @@ export const produtos = [
     imagem: pd10,
   },
 
-  {
-    preco: "R$ 0,60",
-    nome: "Repolho",
-    descricao:
-      "Repolho da melhor qualidade possível, direto do produtor rural para a sua mesa.",
-    imagem: pd11,
-  },
+  // {
+  //   preco: "R$ 0,60",
+  //   nome: "Maçã",
+  //   descricao:
+  //     "Maçã da melhor qualidade possível, direto do produtor rural para a sua mesa.",
+  //   imagem: pd04,
+  // },
 
-  {
-    preco: "R$ 0,60",
-    nome: "Alho",
-    descricao:
-      "Alho da melhor qualidade possível, direto do produtor rural para a sua mesa.",
-    imagem: pd12,
-  },
+  // {
+  //   preco: "R$ 0,60",
+  //   nome: "Goiaba",
+  //   descricao:
+  //     "Goiaba da melhor qualidade possível, direto do produtor rural para a sua mesa.",
+  //   imagem: pd05,
+  // },
+  // {
+  //   preco: "R$ 0,60",
+  //   nome: "Laranja",
+  //   descricao:
+  //     "Laranja da melhor qualidade possível, direto do produtor rural para a sua mesa.",
+  //   imagem: pd06,
+  // },
+
+  // {
+  //   preco: "R$ 0,60",
+  //   nome: "Abacate",
+  //   descricao:
+  //     "Abacate da melhor qualidade possível, direto do produtor rural para a sua mesa.",
+  //   imagem: pd07,
+  // },
+
+  // {
+  //   preco: "R$ 0,60",
+  //   nome: "Repolho",
+  //   descricao:
+  //     "Repolho da melhor qualidade possível, direto do produtor rural para a sua mesa.",
+  //   imagem: pd11,
+  // },
+
+  // {
+  //   preco: "R$ 0,60",
+  //   nome: "Alho",
+  //   descricao:
+  //     "Alho da melhor qualidade possível, direto do produtor rural para a sua mesa.",
+  //   imagem: pd12,
+  // },
 ];

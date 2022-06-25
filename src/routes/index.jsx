@@ -5,6 +5,7 @@ import Route from "./Route";
 import Home from "../pages/Home";
 import Sobre from "../pages/Sobre";
 import Carrinho from "../pages/Carrinho";
+import Descricao from "../pages/Descricao";
 import Error from "../pages/NotFound";
 import Base from "../pages/Base";
 
@@ -20,6 +21,7 @@ const Routes = () => {
 
       {/*<Route path="/dashboard" component={Dashboard} isPrivate />*/}
       <Route path="/carrinho" exact component={Base} child={Carrinho} />
+      <Route path="/descricao/:id" exact component={Base} child={Descricao} />
 
       <Route path="*" exact component={Error} />
     </Switch>

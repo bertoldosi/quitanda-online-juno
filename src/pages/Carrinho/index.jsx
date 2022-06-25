@@ -282,7 +282,7 @@ function Carrinho() {
               </div>
 
               {/*<div className="mb-3">
-            <label for="" className="form-label">
+            <label htmlFor="" className="form-label">
               Número de parcelamento
             </label>
             <select className="form-select" aria-label="Default select example">

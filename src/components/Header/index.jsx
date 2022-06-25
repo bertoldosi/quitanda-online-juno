@@ -41,6 +41,30 @@ function Header() {
               </li>
             </ul>
 
+            <div className="align-self-end mx-1">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <span
+                    className="
+                      badge
+                      rounded-pill
+                      bg-light
+                      text-danger
+                      position-absolute
+                      ms-4
+                      mt-0
+                    "
+                    title="5 produto(s) na lista de desejo"
+                  >
+                    <small>5</small>
+                  </span>
+                  <a className="nav-link text-white" href="/desejo">
+                    <i className="bi bi-suit-heart h5"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             <div className="align-self-end">
               <ul className="navbar-nav">
                 <li className="nav-item">
@@ -59,10 +83,7 @@ function Header() {
                     <small>5</small>
                   </span>
                   <a className="nav-link text-white" href="/carrinho">
-                    <i
-                      className="bi-cart"
-                      style={{ fontSize: "24px", lineHeight: "24px" }}
-                    ></i>
+                    <i className="bi-cart h5"></i>
                   </a>
                 </li>
               </ul>

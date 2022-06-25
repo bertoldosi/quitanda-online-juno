@@ -4,7 +4,6 @@ async function gerarToken() {
   await api
     .post("/token")
     .then((response) => {
-      console.log(response.data);
       localStorage.setItem("@tokenJuno", response.data);
     })
     .catch((erro) => {

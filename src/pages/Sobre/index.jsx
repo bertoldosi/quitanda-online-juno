@@ -4,15 +4,15 @@ function Sobre() {
   return (
     <main className="flex-fill">
       <div className="container">
-        <div class="card mb-5 ">
+        <div className="card mb-5 ">
           <img
-            class="card-img-top mb-3"
+            className="card-img-top mb-3"
             src={bannerImg}
             alt="Imagens inlustrativa de colheita e logo da empresa"
           />
-          <div class="card-body">
-            <h4 class="card-title">Quem somos ?</h4>
-            <p class="card-text">
+          <div className="card-body">
+            <h4 className="card-title">Quem somos ?</h4>
+            <p className="card-text">
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
               making it over 2000 years old. Richard McClintock, a Latin
