@@ -1,7 +1,12 @@
+import Loading from "../Loading";
 import Pagination from "../Pagination";
 import Product from "../Product";
 
 function ProductList({ produtos }) {
+  if (!produtos) {
+    return <Loading />;
+  }
+
   return (
     <main className="flex-fill">
       <div className="container">

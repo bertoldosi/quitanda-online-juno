@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import { formartMoney } from "../../helpers";
+import Loading from "../Loading";
 
 const GET_PRODUTO_INFO = gql`
   query GetProdutoInfo($id: ID) {
@@ -25,6 +26,10 @@ function ProductDescription() {
       id,
     },
   });
+
+  if (!data) {
+    return <Loading />;
+  }
 
   return (
     <div className="d-flex justify-content-center flex-column flex-sm-column flex-md-row">
